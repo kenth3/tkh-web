@@ -1,0 +1,19 @@
+<template>
+    <div class="carousel slide">                  
+
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner">
+            <div class.bind="item.current ? 'item active' : 'item'" repeat.for="item of items">
+                <img class="img-responsive img-full" src="${item.image}" alt="${item.text}">
+            </div>
+        </div>
+      
+        <!-- Controls -->
+        <a class="left carousel-control" click.trigger="previous(true)">
+            <span class="icon-prev"></span>
+        </a>
+        <a class="right carousel-control" click.trigger="next(true)">
+            <span class="icon-next"></span>
+        </a>
+  </div>
+</template> 

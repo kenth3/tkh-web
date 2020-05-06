@@ -1,0 +1,91 @@
+<template>
+    <require from="./resources/value-converters/dateformatshort"></require>
+
+    <div class="container">
+        <div class="row">
+            <div class="box">
+                <div class="col-lg-12">
+                    <hr>
+                    <h2 class="intro-text text-center">
+                        <strong>${title}</strong>
+                    </h2>
+                    <hr>
+                    
+                    <div class="form-group">
+                        <label for="title">Title</label>
+                        <input type="text" class="form-control" id="title" value.bind="post.name" />
+                    </div>
+                    <div class="form-group">
+                        <label for="slug">Slug</label>
+                        <input type="text" class="form-control" id="slug" value.bind="post.file" />
+                    </div>
+                    <div class="form-group">
+                        <label for="postDate">Date</label>
+                        <input type="text" class="form-control" id="postDate" value.bind="post.postDate | dateFormatShort" />
+                    </div>
+                    <div class="form-group">
+                        <label for="preview">Preview</label>
+                        <textarea class="form-control" style="min-height: 150px" id="preview" value.bind="post.preview"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="content">Content</label>
+                        <textarea class="form-control" style="min-height: 400px" id="content" value.bind="post.fullContent"></textarea>
+                    </div>
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" checked.bind="post.html"> This content is HTML (uncheck for Markdown)
+                        </label>
+                    </div>
+
+                    
+                </div>
+                <div class="col-lg-6">
+                    <p>
+                        <strong>Category</strong>
+                    </p>
+                    <div class="form-group">
+                        <label for="category">Choose an existing one below or enter a new one here.</label>
+                        <input type="text" class="form-control" id="category" value.bind="post.category" />
+                    </div>
+                    
+                     <div repeat.for="existingCategory of categories">
+                        <a href="javascript:;" click.delegate="selectCategory(existingCategory)" class="list-group-item ${existingCategory === post.category ? 'active' : ''}">
+                            ${existingCategory}
+                        </a>
+                    </div>
+
+                </div>
+                <div class="col-lg-6">
+                    <p>
+                        <strong>Tags</strong><br/>
+                    </p>
+                    <div class="form-group">
+                        <label for="newTag">Choose any existing tag below or enter a new one here.</label>
+                        <input type="text" class="form-control" id="newTag" value.bind="newTag" />
+                        <button click.trigger="addTag(newTag, true)" class="btn btn-default">Add</button>
+                    </div>
+                    
+                    <strong>Selected</strong><br/>
+                    <div if.bind="!post.tags.length">No tags selected.</div> 
+                    <div repeat.for="tag of post.tags">
+                        <a href="javascript:;" click.delegate="removeTag(tag)" class="list-group-item">
+                            ${tag}
+                        </a>
+                    </div>
+
+                    <strong>Existing</strong><br/>
+                    <div repeat.for="existingTag of tags">
+                        <a href="javascript:;" click.delegate="addTag(existingTag)" class="list-group-item">
+                            ${existingTag}
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-12"> 
+                    <br/><br/>
+                    <button click.trigger="save()" class="btn btn-default">Save</button>
+                    <span>${error}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

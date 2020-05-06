@@ -1,0 +1,32 @@
+<template>
+  <require from="bootstrap/css/bootstrap.css"></require>
+  <!--<require from="bootstrap/fonts/glyphicons-halflings-regular.woff2"></require>
+  <require from="bootstrap/fonts/glyphicons-halflings-regular.woff"></require>
+  <require from="bootstrap/fonts/glyphicons-halflings-regular.tiff"></require>-->
+
+  <require from="./css/business-casual.css"></require>
+  <require from="./nav-bar"></require>
+
+  <div class="brand">Thomas Kent Hurd</div>
+    <div class="address-bar">Bassoonist | Composer</div>
+
+    <!-- Navigation -->
+    <nav-bar router.bind="router"></nav-bar>
+
+    <div class="page-host">
+        <router-view></router-view>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <p>
+                        Copyright &copy; Thomas Kent Hurd ${year}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</template>

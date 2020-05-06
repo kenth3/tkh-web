@@ -1,0 +1,18 @@
+<template>
+  <require from="../value-converters/dateformat"></require>
+  <!--<img class="img-responsive img-border img-full" src="img/slide-1.jpg" alt="">-->
+  <h2>${post.name}
+      <br>
+      <small>${post.postDate | dateFormat}</small>
+  </h2>
+  <div if.bind="post.tags.length">
+    <span class="glyphicon glyphicon-tags" aria-hidden="true"></span>&nbsp;
+    <span repeat.for="tag of post.tags">
+         ${tag}&nbsp;&nbsp;
+    </span>
+  </div>
+  <p>${post.preview}</p>
+  <a href="#/blog/${post.file}" class="btn btn-default btn-lg">Read More</a>
+  <a if.bind="loggedIn" href="/#/edit/${post.file}" class="btn btn-default btn-lg">Edit</a>
+  <hr>
+</template>

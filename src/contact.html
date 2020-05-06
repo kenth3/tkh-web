@@ -1,0 +1,76 @@
+<template>
+  <require from="./resources/elements/recaptcha"></require>
+
+  <div class="container">
+    <div class="row">
+      <div class="box">
+        <div class="col-lg-12">
+          <hr />
+          <h2 class="intro-text text-center">
+            <strong>CONTACT</strong>
+          </h2>
+          <hr />
+          Get in touch.<br /><br />
+        </div>
+      </div>
+      <div class="box">
+        <div class="col-lg-12">
+          <div if.bind="error" class="alert alert-danger">${error}</div>
+          <div if.bind="controller.errors.length" class="alert alert-danger">
+            <ul>
+              <li repeat.for="error of controller.errors">
+                ${error.message}
+              </li>
+            </ul>
+          </div>
+          <div if.bind="sent" class="alert alert-success">
+            ${successMessage}
+          </div>
+        </div>
+        <div class="col-lg-12">
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input
+              type="text"
+              class="form-control"
+              id="name"
+              value.bind="contact.name & validate"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input
+              type="email"
+              class="form-control"
+              id="email"
+              value.bind="contact.email & validate"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea
+              class="form-control"
+              id="message"
+              rows="5"
+              value.bind="contact.message & validate"
+              required
+            ></textarea>
+          </div>
+          <div class="form-group">
+            <recaptcha theme="light" verified.call="onVerified()"></recaptcha>
+            <button
+              disabled.bind="!response"
+              if.bind="!sent"
+              click.trigger="send()"
+              class="btn btn-default"
+            >
+              Send
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
