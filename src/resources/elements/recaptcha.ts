@@ -12,7 +12,7 @@ script.async = true;
 script.defer = true;
 document.head.appendChild(script);
 
-const sitekey = "6Ld0dzQUAAAAAMkQRIg5shdJoqmgyd9Nt4WKK0K8-VCK";
+const sitekey = "6Ld0dzQUAAAAAMkQRIg5shdJoqmgyd9Nt4WKK0K8";
 
 @noView()
 @inject(Element)
