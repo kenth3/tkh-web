@@ -7,7 +7,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-define('app',["require", "exports", "aurelia-router", "aurelia-framework", "./models/AppState", "jquery"], function (require, exports, aurelia_router_1, aurelia_framework_1, AppState_1) {
+define('app',["require", "exports", "aurelia-router", "aurelia-framework", "./models/AppState"], function (require, exports, aurelia_router_1, aurelia_framework_1, AppState_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     var App = (function () {
@@ -82,8 +82,6 @@ define('app',["require", "exports", "aurelia-router", "aurelia-framework", "./mo
                 },
             ]);
             this.router = router;
-        };
-        App.prototype.attached = function () {
         };
         App = __decorate([
             aurelia_framework_1.inject(AppState_1.AppState),
@@ -757,7 +755,7 @@ define('resources/elements/recaptcha',["require", "exports", "aurelia-framework"
     script.async = true;
     script.defer = true;
     document.head.appendChild(script);
-    var sitekey = "6Ld0dzQUAAAAAMkQRIg5shdJoqmgyd9Nt4WKK0K8-VCK";
+    var sitekey = "6Ld0dzQUAAAAAMkQRIg5shdJoqmgyd9Nt4WKK0K8";
     var Recaptcha = (function () {
         function Recaptcha(element) {
             this.element = element;

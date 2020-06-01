@@ -1,7 +1,6 @@
 import { RouterConfiguration, Router, Redirect } from "aurelia-router";
 import { inject } from "aurelia-framework";
 import { AppState } from "./models/AppState";
-import "jquery";
 
 @inject(AppState)
 export class App {
@@ -81,20 +80,20 @@ export class App {
     this.router = router;
   }
 
-  attached() {
-    // This makes sure the nav-bar collapses if we're on a smaller screen
-    // Note: ts checker and au build gulp taks complains about this code,
-    //       but this is what works.  If I change the imports above so jquery imports
-    //       "$", no complaints are generated from ts or au build, but then the browser
-    //       complains that "jquery_1.default" is not a function.
-    // $(".navbar-nav li a").click((event: any) => {
-    //   // check if window is small enough so dropdown is created
-    //   var toggle = $(".navbar-toggle").is(":visible");
-    //   if (toggle) {
-    //     $(".navbar-collapse").collapse('hide');
-    //   }
-    // });
-  }
+  // attached() {
+  //   // This makes sure the nav-bar collapses if we're on a smaller screen
+  //   // Note: ts checker and au build gulp taks complains about this code,
+  //   //       but this is what works.  If I change the imports above so jquery imports
+  //   //       "$", no complaints are generated from ts or au build, but then the browser
+  //   //       complains that "jquery_1.default" is not a function.
+  //   $(".navbar-nav li a").click((event: any) => {
+  //     // check if window is small enough so dropdown is created
+  //     var toggle = $(".navbar-toggle").is(":visible");
+  //     if (toggle) {
+  //       $(".navbar-collapse").collapse("hide");
+  //     }
+  //   });
+  // }
 }
 
 @inject(AppState)
