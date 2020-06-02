@@ -1,46 +1,56 @@
 <template>
-    <require from="./resources/value-converters/sort"></require>
-    <require from="./resources/elements/blog-post-list-item"></require>
-    
-    <div class="container">
-        <div class="row">
-                <div class="col-md-9">
-                    <div class="box">
-                    <hr>
-                    <h2 class="intro-text text-center">
-                        <strong>BLOG</strong>
-                    </h2>
-                    <hr>
-                    <div class="text-center" repeat.for="post of posts | sort:'postDate'">
-                        <blog-post-list-item post.bind="post" logged-in.bind="loggedIn"></blog-post-list-item>
-                    </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="box">
-                        <div if.bind="loggedIn">
-                            <a href="/#/edit" class="btn btn-default btn-lg">New Post</a>
-                        </div>
-                        <h3 class="intro-text text-center">
-                            <strong>CATEGORIES</strong>
-                        </h3>
-                        <div repeat.for="category of categories">
-                            <a href="javascript:;" click.delegate="selectCategory(category)" class="list-group-item ${category === selectedCategory ? 'active' : ''}">
-                                ${category}
-                            </a>
-                        </div>
+  <require from="./resources/value-converters/sort"></require>
+  <require from="./resources/elements/blog-post-list-item"></require>
 
-                        <h3 class="intro-text text-center">
-                            <strong>TAGS</strong>
-                        </h3>
-                        <div repeat.for="tag of tags">
-                            <a href="javascript:;" click.delegate="selectTag(tag)" class="list-group-item ${tag === selectedTag ? 'active' : ''}">
-                                ${tag}
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            
+  <div class="container">
+    <div class="row">
+      <div class="col-md-9">
+        <div class="box">
+          <hr />
+          <h2 class="intro-text text-center">
+            <strong>BLOG AND STUFF</strong>
+          </h2>
+          <hr />
+          <div class="text-center" repeat.for="post of posts | sort:'postDate'">
+            <blog-post-list-item
+              post.bind="post"
+              logged-in.bind="loggedIn"
+            ></blog-post-list-item>
+          </div>
         </div>
+      </div>
+      <div class="col-md-3">
+        <div class="box">
+          <div if.bind="loggedIn">
+            <a href="/#/edit" class="btn btn-default btn-lg">New Post</a>
+          </div>
+          <h3 class="intro-text text-center">
+            <strong>CATEGORIES</strong>
+          </h3>
+          <div repeat.for="category of categories">
+            <a
+              href="javascript:;"
+              click.delegate="selectCategory(category)"
+              class="list-group-item ${category === selectedCategory ? 'active' : ''}"
+            >
+              ${category}
+            </a>
+          </div>
+
+          <h3 class="intro-text text-center">
+            <strong>TAGS</strong>
+          </h3>
+          <div repeat.for="tag of tags">
+            <a
+              href="javascript:;"
+              click.delegate="selectTag(tag)"
+              class="list-group-item ${tag === selectedTag ? 'active' : ''}"
+            >
+              ${tag}
+            </a>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
 </template>
